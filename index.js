@@ -115,8 +115,15 @@ app.get("/api/users/:_id/logs", async (req, res) => {
     duration: e.duration,
     date: e.date.toDateString(),
   }));
-});
 
+  // Presenting response in JSON format
+  res.json({
+    username: user.username,
+    count: Number(exercises.length),
+    _id: user._id,
+    log,
+  });
+});
 
 // LAST POINT : AIN'T ABOUT TO BE TOUCHED!
 const listener = app.listen(process.env.PORT || 3000, () => {
